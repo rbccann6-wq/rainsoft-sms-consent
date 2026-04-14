@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RainSoft of the Wiregrass — SMS Communications</title>
+<meta name="description" content="RainSoft of the Wiregrass SMS messaging program for water test appointments, service updates, and job application communications. Opt-in required. Reply STOP to cancel.">
+<style>
+  :root {
+    --blue: #0a4d8c;
+    --blue-dark: #06335c;
+    --teal: #4fb3d9;
+    --bg: #f4f8fb;
+    --text: #1a2332;
+    --muted: #5b6b80;
+    --border: #d8e1ec;
+    --green: #2d8a3e;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  header {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+    color: white;
+    padding: 32px 24px 56px;
+    text-align: center;
+    border-bottom: 4px solid var(--teal);
+  }
+  header h1 { margin: 0 0 6px; font-size: 28px; font-weight: 800; }
+  header .tag { margin: 0; opacity: 0.9; font-size: 15px; }
+  main { max-width: 780px; margin: -32px auto 64px; padding: 0 16px; }
+  .card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(10, 77, 140, 0.06);
+  }
+  h2 {
+    margin: 0 0 16px;
+    font-size: 20px;
+    color: var(--blue-dark);
+    border-bottom: 2px solid var(--teal);
+    padding-bottom: 8px;
+    display: inline-block;
+  }
+  h3 { margin: 22px 0 8px; font-size: 16px; color: var(--blue-dark); }
+  p { margin: 8px 0; }
+  ul { margin: 8px 0 8px 20px; padding: 0; }
+  li { margin: 4px 0; }
+  .business {
+    background: #e8f3fb;
+    border-left: 4px solid var(--blue);
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+  }
+  .business strong { color: var(--blue-dark); }
+  .sample {
+    background: #f5f9fc;
+    border: 1px dashed #b9cce0;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 8px 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 14px;
+    color: #2a3a52;
+  }
+  .keyword {
+    display: inline-block;
+    background: var(--blue);
+    color: white;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  form {
+    display: grid;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    color: var(--blue-dark);
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  input[type="text"], input[type="tel"], input[type="email"], select, textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: white;
+    font-family: inherit;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(10, 77, 140, 0.15);
+  }
+  .checkbox-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: #fffbe8;
+    border: 1px solid #f0e1a8;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .checkbox-row input[type="checkbox"] {
+    margin-top: 3px;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+  }
+  button {
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  button:hover { background: var(--blue-dark); }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 600px) { .meta-grid { grid-template-columns: 1fr; } }
+  footer {
+    text-align: center;
+    color: var(--muted);
+    padding: 24px;
+    font-size: 13px;
+  }
+  footer a { color: var(--blue); text-decoration: none; }
+  .nav-anchor { display: block; height: 0; margin-top: -80px; padding-top: 80px; visibility: hidden; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>RainSoft of the Wiregrass</h1>
+  <p class="tag">SMS Communications & Consent Program</p>
+</header>
+
+<main>
+
+  <!-- BUSINESS IDENTITY -->
+  <section class="card">
+    <h2>About Us</h2>
+    <div class="business">
+      <strong>RainSoft of the Wiregrass</strong> (also operating as RainSoft Gulf Coast)<br>
+      Authorized RainSoft water treatment dealer<br>
+      Serving Enterprise, Dothan, the Florida Panhandle, and the Wiregrass region.
+    </div>
+    <p>
+      We provide water treatment systems, drinking-water filtration, in-home water
+      testing, and ongoing service to residential customers across Southeast Alabama
+      and the Florida Panhandle. This page describes the SMS text-message communication
+      program we use to stay in touch with applicants, customers, and prospects.
+    </p>
+    <div class="meta-grid">
+      <div>
+        <strong>Mailing address</strong><br>
+        1112 Glover Ave<br>
+        Enterprise, AL 36330
+      </div>
+      <div>
+        <strong>Contact</strong><br>
+        Phone: <a href="tel:+13344891215">(334) 489-1215</a><br>
+        Hiring: <a href="tel:+13344895815">(334) 489-5815</a><br>
+        Email: <a href="mailto:hiring@rainsoftse.com">hiring@rainsoftse.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SMS PROGRAM OVERVIEW -->
+  <section class="card">
+    <h2>Our SMS Programs</h2>
+    <p>
+      RainSoft of the Wiregrass operates three separate, opt-in SMS communication
+      streams. You will only receive messages from a stream you have explicitly
+      opted into. We do not buy or rent phone lists.
+    </p>
+
+    <h3>1. Job Applicant Communications</h3>
+    <p>
+      When you apply for a position with RainSoft of the Wiregrass — through our
+      Facebook Lead Ad, by texting our careers number, or by calling our automated
+      hiring agent — you are opting in to receive text messages about your
+      application status, qualifying questions, and interview scheduling.
+    </p>
+    <div class="sample">
+      Hi! 👋 This is the RainSoft of the Wiregrass careers line. We're hiring a
+      Service Admin and I'd love to get you started. First — what's your first
+      and last name? Reply STOP to opt out.
+    </div>
+
+    <h3>2. Water Test Appointment Confirmations</h3>
+    <p>
+      When you book a free in-home water test or service appointment with RainSoft
+      of the Wiregrass, you are opting in to receive appointment confirmation,
+      reminder, and on-the-way text messages from our team.
+    </p>
+    <div class="sample">
+      RainSoft: Your in-home water test is confirmed for Tue Apr 22 at 2:00 PM.
+      Reply C to confirm, R to reschedule, or STOP to cancel messages.
+    </div>
+
+    <h3>3. Customer Service Updates</h3>
+    <p>
+      Existing RainSoft customers receive service-related text messages — annual
+      maintenance reminders, technician arrival notices, parts-on-order updates,
+      and warranty notifications. You are opted in by signing your service
+      agreement; you can opt out at any time by replying STOP.
+    </p>
+    <div class="sample">
+      RainSoft Service: Your tech Sarah is on the way and ETA 25 minutes. Reply
+      HELP for help or STOP to opt out of service messages.
+    </div>
+  </section>
+
+  <!-- OPT-IN FORM -->
+  <section class="card">
+    <h2>Request Information & Opt In</h2>
+    <p>
+      Use this form to request more information or to start a conversation with
+      our team via SMS. Submitting this form is your written consent to receive
+      text messages from RainSoft of the Wiregrass at the phone number provided.
+    </p>
+    <form id="optin-form" action="mailto:hiring@rainsoftse.com" method="post" enctype="text/plain">
+      <div>
+        <label for="name">Full name</label>
+        <input id="name" name="name" type="text" required>
+      </div>
+      <div>
+        <label for="phone">Mobile phone number</label>
+        <input id="phone" name="phone" type="tel" placeholder="(334) 555-0100" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+      </div>
+      <div>
+        <label for="program">Which program are you opting into?</label>
+        <select id="program" name="program" required>
+          <option value="">Choose one…</option>
+          <option value="hiring">Job applicant communications</option>
+          <option value="appointments">Water test appointments</option>
+          <option value="service">Existing customer service updates</option>
+        </select>
+      </div>
+      <div>
+        <label for="message">What can we help you with? (optional)</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+      </div>
+      <div class="checkbox-row">
+        <input id="consent" name="consent" type="checkbox" required>
+        <label for="consent" style="margin: 0; font-weight: 500;">
+          I authorize RainSoft of the Wiregrass to send me SMS text messages at
+          the phone number above for the program I selected. Message and data
+          rates may apply. Message frequency varies. I can reply STOP at any
+          time to opt out, or HELP for help. I have read and agree to the
+          <a href="#privacy">Privacy Policy</a> and <a href="#terms">Terms of Service</a>.
+        </label>
+      </div>
+      <button type="submit">Submit & Opt In</button>
+    </form>
+  </section>
+
+  <!-- HELP / STOP -->
+  <section class="card">
+    <h2>How to Opt Out or Get Help</h2>
+    <p>
+      You can stop receiving messages at any time by replying with one of the
+      following keywords to any text message we send you:
+    </p>
+    <ul>
+      <li><span class="keyword">STOP</span> — opt out of all SMS messages</li>
+      <li><span class="keyword">UNSUBSCRIBE</span> — same as STOP</li>
+      <li><span class="keyword">QUIT</span> — same as STOP</li>
+      <li><span class="keyword">CANCEL</span> — same as STOP</li>
+    </ul>
+    <p>
+      After we receive any of those keywords, you will receive one final
+      confirmation that you have been unsubscribed and no further messages
+      will be sent to your number.
+    </p>
+    <p>To get help, reply <span class="keyword">HELP</span> to any of our
+      messages, or contact us directly:
+    </p>
+    <ul>
+      <li>Email: <a href="mailto:hiring@rainsoftse.com">hiring@rainsoftse.com</a></li>
+      <li>Phone: <a href="tel:+13344891215">(334) 489-1215</a></li>
+    </ul>
+    <p style="font-size: 14px; color: var(--muted); margin-top: 16px;">
+      <strong>Message frequency:</strong> varies by program. Hiring conversations
+      typically run 3–10 messages per applicant. Appointment programs send 2–4
+      messages per appointment. Service updates are infrequent and event-driven.
+    </p>
+    <p style="font-size: 14px; color: var(--muted);">
+      <strong>Carriers:</strong> Carriers are not liable for delayed or
+      undelivered messages. Message and data rates may apply.
+    </p>
+  </section>
+
+  <!-- PRIVACY POLICY -->
+  <span id="privacy" class="nav-anchor"></span>
+  <section class="card">
+    <h2>Privacy Policy</h2>
+    <p><em>Last updated: April 14, 2026</em></p>
+
+    <h3>What we collect</h3>
+    <p>
+      When you opt in to receive SMS messages from RainSoft of the Wiregrass, we
+      collect: your name, mobile phone number, email address, the program you
+      opted into, and any message content you send to us.
+    </p>
+
+    <h3>How we use your information</h3>
+    <p>
+      We use the information you provide solely to communicate with you about
+      the SMS program you opted into. Specifically:
+    </p>
+    <ul>
+      <li>Job application processing and interview scheduling</li>
+      <li>Water test appointment confirmations and reminders</li>
+      <li>Customer service updates, technician dispatch notifications, and warranty notices</li>
+      <li>Responding to questions you ask us via text</li>
+    </ul>
+
+    <h3>How we share your information</h3>
+    <p>
+      <strong>No mobile information will be shared with third parties or
+      affiliates for marketing or promotional purposes.</strong> All categories
+      of information we collect exclude text-messaging originator opt-in data
+      and consent — this information will not be shared with any third parties
+      under any circumstances.
+    </p>
+    <p>
+      We use the following service providers to deliver our SMS messages and
+      operate this program: Twilio Inc. (SMS delivery), OpenPhone (number
+      provisioning and inbound routing), and our hiring CRM (applicant tracking).
+      These providers are contractually bound to use your information only to
+      provide the service we have requested.
+    </p>
+
+    <h3>Your rights</h3>
+    <p>You have the right to:</p>
+    <ul>
+      <li>Opt out of SMS messages at any time by replying STOP</li>
+      <li>Request a copy of the information we have collected about you</li>
+      <li>Request that we delete your information from our systems</li>
+      <li>Update or correct your information</li>
+    </ul>
+    <p>
+      To exercise any of these rights, email
+      <a href="mailto:hiring@rainsoftse.com">hiring@rainsoftse.com</a> or call
+      (334) 489-1215.
+    </p>
+
+    <h3>Data retention</h3>
+    <p>
+      We retain SMS conversation history and contact information for as long as
+      you remain an active applicant, prospect, or customer, plus a reasonable
+      period after for legal and accounting purposes (typically 7 years).
+      Opt-out records are retained indefinitely so we can honor your opt-out
+      preference.
+    </p>
+
+    <h3>Children's privacy</h3>
+    <p>
+      Our SMS programs are not directed at children under 18. We do not knowingly
+      collect personal information from children. If you believe a child has
+      provided us with personal information, contact us and we will delete it.
+    </p>
+
+    <h3>Changes to this policy</h3>
+    <p>
+      We may update this privacy policy from time to time. The "Last updated"
+      date at the top of this section reflects the latest revision.
+    </p>
+  </section>
+
+  <!-- TERMS OF SERVICE -->
+  <span id="terms" class="nav-anchor"></span>
+  <section class="card">
+    <h2>Terms of Service</h2>
+    <p><em>Last updated: April 14, 2026</em></p>
+
+    <h3>1. Acceptance of terms</h3>
+    <p>
+      By submitting the opt-in form on this page, by texting our published phone
+      numbers, or by signing a RainSoft of the Wiregrass service agreement, you
+      agree to the terms of this SMS communication program.
+    </p>
+
+    <h3>2. Description of service</h3>
+    <p>
+      RainSoft of the Wiregrass operates an SMS communication program with three
+      distinct streams: job applicant communications, water test appointment
+      confirmations, and existing customer service updates. You will only
+      receive messages from streams you have specifically opted into.
+    </p>
+
+    <h3>3. Costs</h3>
+    <p>
+      RainSoft of the Wiregrass does not charge for SMS messages. However,
+      message and data rates from your wireless carrier may apply. Check with
+      your wireless carrier for details on your messaging plan.
+    </p>
+
+    <h3>4. Opting out</h3>
+    <p>
+      You may opt out of any SMS program at any time by replying STOP,
+      UNSUBSCRIBE, QUIT, or CANCEL to any message we send you. After opting out
+      you will receive one confirmation message and no further messages.
+    </p>
+
+    <h3>5. Carriers</h3>
+    <p>
+      Supported carriers include AT&T, T-Mobile, Verizon Wireless, US Cellular,
+      Sprint, Boost, Virgin Mobile USA, MetroPCS, Cricket, and most regional
+      carriers. T-Mobile is not liable for delayed or undelivered messages.
+    </p>
+
+    <h3>6. Message content</h3>
+    <p>
+      Messages may include: confirmations, reminders, scheduling, service
+      updates, application status, qualifying questions, and responses to
+      messages you initiate. We will not use SMS for unsolicited marketing.
+    </p>
+
+    <h3>7. Limitation of liability</h3>
+    <p>
+      RainSoft of the Wiregrass is not liable for any direct, indirect,
+      incidental, or consequential damages arising from your use of this SMS
+      program. We make no warranties about the timeliness, delivery, or content
+      of any specific message.
+    </p>
+
+    <h3>8. Governing law</h3>
+    <p>
+      These terms are governed by the laws of the State of Alabama. Any disputes
+      will be resolved in the state and federal courts located in Coffee County,
+      Alabama.
+    </p>
+
+    <h3>9. Contact</h3>
+    <p>
+      Questions about these terms? Email
+      <a href="mailto:hiring@rainsoftse.com">hiring@rainsoftse.com</a> or call
+      (334) 489-1215.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 RainSoft of the Wiregrass · 1112 Glover Ave, Enterprise, AL 36330 ·
+  <a href="#privacy">Privacy Policy</a> · <a href="#terms">Terms of Service</a>
+</footer>
+
+</body>
+</html>
