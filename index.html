@@ -284,17 +284,42 @@
         <label for="message">What can we help you with? (optional)</label>
         <textarea id="message" name="message" rows="4"></textarea>
       </div>
+      <!-- Service / transactional consent — REQUIRED for the selected program.
+           Covers appointment confirmations, service updates, and job-applicant
+           communications only. This is NOT marketing. -->
       <div class="checkbox-row">
         <input id="consent" name="consent" type="checkbox" required>
         <label for="consent" style="margin: 0; font-weight: 500;">
-          I authorize RainSoft of the Wiregrass to send me SMS text messages at
-          the phone number above for the program I selected. Message and data
-          rates may apply. Message frequency varies. I can reply STOP at any
-          time to opt out, or HELP for help. I have read and agree to the
-          <a href="#privacy">Privacy Policy</a> and <a href="#terms">Terms of Service</a>.
+          <strong>Required:</strong> I authorize RainSoft of the Wiregrass
+          (R&amp;M Clearwater and Air Inc) to send me transactional SMS text
+          messages at the phone number above for the program I selected —
+          appointment confirmations, service updates, and job-applicant
+          communications only. Message and data rates may apply. Message
+          frequency varies. I can reply STOP at any time to opt out, or HELP
+          for help. I have read and agree to the
+          <a href="#privacy">Privacy Policy</a> and
+          <a href="#terms">Terms of Service</a>.
         </label>
       </div>
-      <button type="submit">Submit & Opt In</button>
+
+      <!-- SEPARATE, OPTIONAL marketing consent — unchecked by default.
+           TCR / Twilio A2P compliance requires that marketing consent is
+           collected separately from service consent (error 30913). Not a
+           condition of any service or purchase. -->
+      <div class="checkbox-row" style="background: #f4f8fb;">
+        <input id="marketing-consent" name="marketing_consent" type="checkbox">
+        <label for="marketing-consent" style="margin: 0;">
+          <strong>Optional:</strong> I also agree to receive recurring
+          <em>promotional and marketing</em> SMS text messages from RainSoft
+          of the Wiregrass about water-treatment offers, seasonal specials,
+          and referral programs. Consent to marketing messages is
+          <strong>not</strong> a condition of any purchase or service.
+          Message and data rates may apply. Message frequency varies. Reply
+          STOP to opt out, HELP for help.
+        </label>
+      </div>
+
+      <button type="submit">Submit &amp; Opt In</button>
     </form>
   </section>
 
