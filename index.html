@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RainSoft of the Wiregrass — SMS Communications</title>
-<meta name="description" content="RainSoft of the Wiregrass SMS messaging program for water test appointments, service updates, and job application communications. Opt-in required. Reply STOP to cancel.">
+<meta name="description" content="RainSoft of the Wiregrass SMS messaging program for water test appointments, service updates, and job application communications. Opt in to receive messages. Reply STOP to cancel.">
 <style>
   :root {
     --blue: #0a4d8c;
@@ -284,13 +284,16 @@
         <label for="message">What can we help you with? (optional)</label>
         <textarea id="message" name="message" rows="4"></textarea>
       </div>
-      <!-- Service / transactional consent — REQUIRED for the selected program.
+      <!-- Service / transactional consent for the selected program.
            Covers appointment confirmations, service updates, and job-applicant
-           communications only. This is NOT marketing. -->
+           communications only. This is NOT marketing. Form won't submit
+           until this is ticked — "Required" label removed per Twilio
+           (call 2026-04-22) to avoid any suggestion that consent is a
+           condition of service. -->
       <div class="checkbox-row">
         <input id="consent" name="consent" type="checkbox" required>
         <label for="consent" style="margin: 0; font-weight: 500;">
-          <strong>Required:</strong> I authorize RainSoft of the Wiregrass
+          I authorize RainSoft of the Wiregrass
           (R&amp;M Clearwater and Air Inc) to send me transactional SMS text
           messages at the phone number above for the program I selected —
           appointment confirmations, service updates, and job-applicant
